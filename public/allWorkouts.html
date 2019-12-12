@@ -46,26 +46,16 @@
             <!-- Card content -->
             <div class="card-body">
                 <!-- Title -->
-                <h3 class="card-title" id="title"><a>New Workout</a></h3>
+                <h3 class="card-title" id="title"><a>All Workouts</a></h3>
                 <!-- Text -->
-                <p class="card-text"><strong>Enter the information for your workout below:</strong></p>
-                <div class="card-text" id="new-workout">
+                <p class="card-text"><strong>Which workout would you like to modify?</strong></p>
                 <!-- Material form group -->
-                    <form action="/new" method="POST">
-                    <!-- Material input -->
-                        <div class="md-form form-group mt-5">
-                            <input type="date" class="form-control" name="date" required autofocus>
-                            <label for="date-input"><i class="fas fa-calendar-day pr-1"></i>  Date</label>                            
-                        </div>
-                        <div class="md-form mb-4 pink-textarea active-pink-textarea">
-                            <textarea id="activities" class="md-textarea form-control" name="activities" rows="3"></textarea>
-                            <label for="activities">Activities</label>
-                        </div>    
-                        <!-- Button -->
-                        <button class="btn" id="log-new">Add to workouts</button>
-                    </form>
-                <!-- Material form group -->
+                <div class="card-text" id="all-workouts">
+                    <ul>
+
+                    </ul>
                 </div>
+                <!-- Material form group -->
             </div>
       </div>
       <!-- /Card -->

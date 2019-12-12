@@ -8,14 +8,15 @@ html, body {
 }
 
 .main {
-    margin-top: 20%;
+    margin-top: 10%;
+    margin-bottom: 10%;
 }
 
 #stats-card {
     background-color: #F5F4F5;
 }
 
-#welcome {
+#welcome, #title {
     padding-left: 2%;
     font-family: 'Chewy', cursive;
     color: #6369D1;
@@ -35,3 +36,13 @@ html, body {
     position: relative;
         left: 30vw;
 }
+
+#new-workout {
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+
+#date-input {
+    padding: 0 1rem;
+}
+
