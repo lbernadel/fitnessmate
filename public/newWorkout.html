@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Chewy&display=swap" rel="stylesheet">
     <!-- My CSS -->
     <link rel="stylesheet" href="/assets/style.css">
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon"/>
     
     <title>FitnessMate</title>
 </head>
@@ -30,7 +31,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/workouts/all">Summary<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/workouts">View All<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/workouts/new">New Workout</a>
@@ -52,14 +53,14 @@
                 <p class="card-text"><strong>Enter the information for your workout below:</strong></p>
                 <div class="card-text" id="new-workout">
                 <!-- Material form group -->
-                    <form action="/new" method="POST">
+                    <form action="/workouts" method="POST">
                     <!-- Material input -->
                         <div class="md-form form-group mt-5">
                             <input type="date" class="form-control" name="date" required autofocus>
-                            <label for="date-input"><i class="fas fa-calendar-day pr-1"></i>  Date</label>                            
+                            <label for="date"><i class="fas fa-calendar-day pr-1"></i>  Date</label>                            
                         </div>
-                        <div class="md-form mb-4 pink-textarea active-pink-textarea">
-                            <textarea id="activities" class="md-textarea form-control" name="activities" rows="3"></textarea>
+                        <div class="md-form mb-4 form-group">
+                            <textarea class="md-textarea form-control" name="activities" rows="3"></textarea>
                             <label for="activities">Activities</label>
                         </div>    
                         <!-- Button -->

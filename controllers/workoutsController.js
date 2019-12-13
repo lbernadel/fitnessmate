@@ -2,28 +2,39 @@ const router = require("express").Router();
 //import model
 const Workout = require("../models/workoutsModel");
 
-router.post("/new", (req, res) => {
-    console.log(req.body)
-    
-    Workout.create(req.body)
-    .then(plan => {
-        res.json(plan)
-    })
-    .catch(err => {
-        res.json(err)
+// Get all workouts
+router.get("/", async (req, res) => {
+    const plans = await Workout.find({}).lean();
+    res.send(plans);
+});
+
+router.get("/:planDate", (req, res) => {
+    const date = req.params.date;
+
+    Workout.findOne({date: date}, (err, plan) => {
+        if(err){
+            res.send(err)
+        }else {
+            res.json(plan)
+        }
     });
 });
 
-router.get("/resume", (req, res) => {
+router.put("/:planDate", (req, res) => {
+    const date = req.params.date;
 
-})
+    Workout.findOne({date: date}, (err, plan) => {
+        if(err){
+            res.send(err)
+        }else {
+            plan = {};
 
-router.put("/resume", (req, res) => {
+            plan.date = req.Workout.date;
+            plan.activities = req.Workout.activities.join(", ");
 
-});
-
-router.put("/resume/:id", (req, res) => {
-
+            res.send(plan)
+        }
+    });
 });
 
 
