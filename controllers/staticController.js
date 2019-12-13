@@ -9,7 +9,7 @@ router.get("/workouts/new", (req, res) => {
     res.sendFile(path.join(__dirname, "../public/newWorkout.html"))
 });
 
-router.get("/workouts/all", (req, res) => {
+router.get("/workouts", (req, res) => {
     res.sendFile(path.join(__dirname, "../public/allWorkouts.html"))
 });
 
