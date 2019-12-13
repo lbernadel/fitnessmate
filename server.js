@@ -16,7 +16,7 @@ app.use(logger("dev"));
 app.use("/", require("./controllers/staticController"));
 app.use("/api/workouts", require("./controllers/workoutsController"));
 
-// Wildcard route to catch any random paths not above
+// Wildcard route to catch any random paths not in defined routes
 app.use("*", (req, res) => {
     res.sendFile(path.join(__dirname,"./public/home.html"))
 });
