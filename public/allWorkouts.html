@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Chewy&display=swap" rel="stylesheet">
     <!-- My CSS -->
     <link rel="stylesheet" href="/assets/style.css">
-    
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon"/>
     <title>FitnessMate</title>
 </head>
 <body>
@@ -29,7 +29,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/workouts/all">Summary<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/workouts">View All<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/workouts/new">New Workout</a>
@@ -40,22 +40,19 @@
     <!-- /Nav -->
 
     <!-- Summary -->
-    <div class="container-fluid main text-center">
+    <div class="container-fluid main">
         <!-- Card -->
-        <div class="card mx-2 p-3" id="stats-card">       
+        <div class="card mx-2 p-3" id="stats-card">     
             <!-- Card content -->
             <div class="card-body">
+                <p id="confirmSave" class="text-center"></p>
                 <!-- Title -->
-                <h3 class="card-title" id="title"><a>All Workouts</a></h3>
+                <h3 class="card-title text-center" id="title"><a>All Workouts</a></h3>
                 <!-- Text -->
-                <p class="card-text"><strong>Which workout would you like to modify?</strong></p>
-                <!-- Material form group -->
+                <p class="card-text  text-center"><strong>Which workout would you like to modify?</strong></p>
                 <div class="card-text" id="all-workouts">
-                    <ul>
-
-                    </ul>
+                    <!-- RESULT OF QUERY ALL WORKOUTS -->
                 </div>
-                <!-- Material form group -->
             </div>
       </div>
       <!-- /Card -->
@@ -72,6 +69,34 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/js/mdb.min.js"></script>
     <!-- my JS -->
+    <script type="text/javascript">
+        if(location.search.indexOf('?') != -1) {
+            $("#confirmSave").text("Workout plan saved!")
+            setTimeout(() => {
+                $("#confirmSave").text("")
+            }, 1700)
+        }
+                
+        $.get("/api/workouts", data => {
+            data.forEach(plan => {
+                let workout = {
+                    date: plan.date,
+                    activities: plan.activities.join(", "),
+                }
+                const workoutsBody = $("#all-workouts");
+                const planDiv = $('<div class="md-form input-group mb-3">')
+                    
+                planDiv.html(`<div class="input-group-prepend">
+                            <span class="input-group-text md-addon">${workout.date}</span>
+                        </div>                                
+                        <textarea type="text" class="form-control">${workout.activities}</textarea>
+                        <div class="input-group-append">
+                            <button class="btn btn-md resume m-0 px-3" type="button" id="update"><i class="far fa-edit"></i></button>
+                        </div>`)
+                workoutsBody.append(planDiv)
+            })
+        })
+    </script>
     <script type="text/javascript" src="/assets/workouts.js"></script>
 
 </body>

@@ -17,17 +17,16 @@ html, body {
 }
 
 #welcome, #title {
-    padding-left: 2%;
     font-family: 'Chewy', cursive;
     color: #6369D1;
 }
 
-#log-new {
+.log {
     background-color: #82D173;
     color: white;
 }
 
-#resume {
+.resume {
     background-color: #EF476F;
     color: white;
 }
@@ -46,3 +45,16 @@ html, body {
     padding: 0 1rem;
 }
 
+#confirmSave {
+    color: #EF476F;
+    font-weight: bold;
+    /* padding-left: 1.25rem !important; */
+}
+
+#activitiesLabel {
+    text-align: left !important;
+}
+
+#dateLabel {
+    font-size: 1.25rem;
+}

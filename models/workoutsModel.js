@@ -10,10 +10,10 @@ const WorkoutsSchema = new mongoose.Schema({
         type: Array,
         required: [true, "Must enter an activity"]
     },
-    completed: {
-        type: Boolean,
-        default: false
-    },
+    // completed: {
+    //     type: Boolean,
+    //     default: false
+    // },
     created: {
         type: Date,
         default: Date.now

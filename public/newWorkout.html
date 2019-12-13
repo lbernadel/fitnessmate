@@ -42,29 +42,29 @@
     <!-- /Nav -->
 
     <!-- Summary -->
-    <div class="container-fluid main text-center">
+    <div class="container-fluid main">
         <!-- Card -->
         <div class="card mx-2 p-3" id="stats-card">       
             <!-- Card content -->
             <div class="card-body">
                 <!-- Title -->
-                <h3 class="card-title" id="title"><a>New Workout</a></h3>
+                <h3 class="card-title text-center" id="title"><a>New Workout</a></h3>
                 <!-- Text -->
-                <p class="card-text"><strong>Enter the information for your workout below:</strong></p>
-                <div class="card-text" id="new-workout">
+                <p class="card-text text-center"><strong>Enter the information for your workout below:</strong></p>
+                <div class="card-text text-center" id="new-workout">
                 <!-- Material form group -->
                     <form action="/workouts" method="POST">
                     <!-- Material input -->
                         <div class="md-form form-group mt-5">
-                            <input type="date" class="form-control" name="date" required autofocus>
-                            <label for="date"><i class="fas fa-calendar-day pr-1"></i>  Date</label>                            
+                            <input type="date" class="form-control" name="date" id="date" required>
+                            <label id="dateLabel" for="date"><i class="fas fa-calendar-day pr-1"></i>  Date</label>                            
                         </div>
                         <div class="md-form mb-4 form-group">
-                            <textarea class="md-textarea form-control" name="activities" rows="3"></textarea>
-                            <label for="activities">Activities</label>
+                            <textarea class="md-textarea form-control" name="activities" rows="8" id="activities"></textarea>
+                            <label id="activitiesLabel" class="mb-4" for="activities">Activities (Enter activities separated by a comma & space. Example: running, swimming, pushups)</label>
                         </div>    
                         <!-- Button -->
-                        <button class="btn" id="log-new">Add to workouts</button>
+                        <button class="btn log" id="log-new">Add to workouts</button>
                     </form>
                 <!-- Material form group -->
                 </div>
