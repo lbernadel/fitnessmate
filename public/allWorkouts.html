@@ -79,21 +79,22 @@
                 
         $.get("/api/workouts", data => {
             data.forEach(plan => {
-                let workout = {
+                let planInfo = {
+                    id: plan._id,
                     date: plan.date,
                     activities: plan.activities.join(", "),
                 }
                 const workoutsBody = $("#all-workouts");
-                const planDiv = $('<div class="md-form input-group mb-3">')
+                const planForm = $('<div class="md-form input-group mb-3">')
                     
-                planDiv.html(`<div class="input-group-prepend">
-                            <span class="input-group-text md-addon">${workout.date}</span>
+                planForm.html(`<div class="input-group-prepend">
+                            <span class="input-group-text md-addon">${planInfo.date}</span>
                         </div>                                
-                        <textarea type="text" class="form-control">${workout.activities}</textarea>
+                        <textarea type="text" class="form-control" id="${planInfo.id}-activities">${planInfo.activities}</textarea>
                         <div class="input-group-append">
-                            <button class="btn btn-md resume m-0 px-3" type="button" id="update"><i class="far fa-edit"></i></button>
+                            <button class="btn btn-md resume update m-0 px-3" type="button" data-id="${planInfo.id}"><i class="far fa-edit"></i></button>
                         </div>`)
-                workoutsBody.append(planDiv)
+                workoutsBody.append(planForm)
             })
         })
     </script>
