@@ -47,9 +47,10 @@
             <div class="card-body">
                 <p id="confirmSave" class="text-center"></p>
                 <!-- Title -->
-                <h3 class="card-title text-center" id="title"><a>All Workouts</a></h3>
+                <h3 class="card-title text-center pl-2" id="title"><a>All Workouts</a></h3>
                 <!-- Text -->
-                <p class="card-text  text-center"><strong>Which workout would you like to modify?</strong> (your most recent plan is listed first)</p>
+                <p class="card-text text-center"><span id="count"></span>
+                    <br><strong>Which workout would you like to modify?</strong> (your most recent plan is listed first)</p>
                 <div class="card-text" id="all-workouts">
                     <!-- RESULT OF QUERY ALL WORKOUTS -->
                 </div>
@@ -96,6 +97,9 @@
                         </div>`)
                 workoutsBody.append(planForm)
             })
+
+            const totalCount = $("#count")
+            totalCount.html(`Total Plans: ${data.length}`)
         })
     </script>
     <script type="text/javascript" src="/assets/workouts.js"></script>
