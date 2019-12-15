@@ -4,7 +4,7 @@ const Workout = require("../models/workoutsModel");
 
 // Get all workouts
 router.get("/", async (req, res) => {
-    const plans = await Workout.find({}).lean()
+    const plans = await Workout.find({}).sort({ date: -1 }).lean()
     res.send(plans)
 });
 
