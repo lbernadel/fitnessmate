@@ -9,6 +9,7 @@ The PUT route was the hardest of everything.
 
 ### Sources
 * [CRUD w/Mongoose](https://medium.com/@yugagrawal95/mongoose-mongodb-functions-for-crud-application-1f54d74f1b34)
+* [findOneAndUpdate](https://silvantroxler.ch/2016/insert-or-update-with-mongodb-and-mongoose/)
 * [Checking for a URL query string](https://stackoverflow.com/questions/1314383/how-to-check-if-a-query-string-value-is-present-via-javascript/24179815)
 
 ### Future Development Ideas
