@@ -1,6 +1,6 @@
 # [FitnessMate](https://fitnessmate.herokuapp.com/)
 
-![FitnessMate Homepage](/fitnessmate-home_screenshot.jpg)
+![FitnessMate Homepage](fitnessmate-home_screenshot.JPG)
 
 ## Description
 The purpose of this assignment was to utilize a Mongoose schema and Mongo database to create an application that tracks a user's daily workouts.
