@@ -20,8 +20,6 @@ router.post("/workouts", (req, res) => {
     newWorkout.date = req.body.date
     newWorkout.activities = req.body.activities.trim().split(", ")
     
-    console.log(newWorkout)
-
     Workout.create(newWorkout)
     .then(() => {
         res.redirect("/workouts?success=workout saved")

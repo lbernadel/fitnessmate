@@ -8,15 +8,19 @@ router.get("/", async (req, res) => {
     res.send(plans)
 });
 
-router.put("/:planDate", async (req, res) => {
-    const planDate = req.params.date;
-    let id = req.body._id,
-    addActivities = req.body.activities.trim().split(", ");
+router.put("/:planDate", async (req, res, next) => {
+    try {
+        const planDate = req.params.date;
+        let id = req.body._id,
+        addActivities = req.body.activities.trim().split(", ");
 
-    const newPlan = await Workout.findByIdAndUpdate({_id: id, date: planDate}, {activities: addActivities},
-        {new: true, upsert: true, runValidators: true})
-    
-    res.send(newPlan)
+        const newPlan = await Workout.findByIdAndUpdate({_id: id, date: planDate}, {activities: addActivities},
+            {new: true, upsert: false, runValidators: true})
+        
+        res.send(newPlan)
+    } catch(error) {
+        return next(new Error(error.message))
+    }
 });
 
 

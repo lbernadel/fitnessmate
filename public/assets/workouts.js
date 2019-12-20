@@ -3,11 +3,10 @@
 // grab activities inside the textarea
 // PUT request to save the updated info
 
-$(".update").on("click", (event) => {
-    const plan = event.target;
-    let getPlan = $(plan).attr("data-id");
-    let newActivities = $(plan).attr(`#${getPlan}-activities`);
-    const planDate = $(plan).attr("data-date")
+$(document).on("click", ".update", function() {
+    let getPlan = $(this).attr("data-id");
+    let newActivities = $(`#${getPlan}-activities`).val();
+    const planDate = $(`#${getPlan}-date`).attr("data-date")
 
     $.ajax({
         url: "/api/workouts/" + planDate,
@@ -16,8 +15,7 @@ $(".update").on("click", (event) => {
             _id: getPlan,
             date: planDate,
             activities: newActivities
-        }
-    }).then(info => {
-        console.log(info)
+        },
+        success: window.location.href = "/workouts?success=workout saved"
     });
 });
