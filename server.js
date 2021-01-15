@@ -1,10 +1,16 @@
+//necessary npm packages
 const express = require("express");
-const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
 
-const PORT = process.env.PORT || 3030;
+const PORT = process.env.PORT || 3306;
 const app = express();
+
+//routers
+const staticRouter = require("./controllers/staticController");
+const workoutRouter = require("./controllers/workoutsController");
+const db = require("./models/index");
+
 
 // Static assets
 app.use(express.static(path.join(__dirname, "/public")));
@@ -12,18 +18,20 @@ app.use(express.static(path.join(__dirname, "/public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(logger("dev"));
-// Importing routes
-app.use("/", require("./controllers/staticController"));
-app.use("/api/workouts", require("./controllers/workoutsController"));
+
+
+// Routes
+app.use(staticRouter);
+app.use("/api/workouts", workoutRouter);
 
 // Wildcard route to catch any random paths not in defined routes
 app.use("*", (req, res) => {
     res.sendFile(path.join(__dirname,"./public/home.html"))
 });
 
-// Connect to MongoDB. If deployed, use production db; otherwise, use local db.
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitnessdb", {useNewUrlParser: true});
-
-app.listen(PORT, () => {
-    console.log(`==== Server is running at http://localhost:${PORT} ====`)
+//Synchronize my schema. Connect to db either in production or whatever port is setup for dev
+db.sequelize.sync({ force: process.env.NODE_ENV !== "production" }).then(() => {
+    app.listen(PORT, () => {
+        console.log("Server listening on: http://localhost:" + PORT);
+    });
 });
