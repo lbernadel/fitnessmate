@@ -1,26 +1,25 @@
 const router = require("express").Router();
-//import model
-const Workout = require("../models/workoutsModel");
+const db = require("../models/index");
+const path = require("path");
 
-// Get all workouts
-router.get("/", async (req, res) => {
-    const plans = await Workout.find({}).sort({ date: -1 }).lean()
-    res.send(plans)
-});
+const Workout = db.sequelize.import(path.resolve(__dirname,"../models/workoutModel.js"));
+const Activity = db.sequelize.import(path.resolve(__dirname,"../models/activityModel.js"));
 
-router.put("/:planDate", async (req, res, next) => {
-    try {
-        const planDate = req.params.date;
-        let id = req.body._id,
-        addActivities = req.body.activities.trim().split(", ");
-
-        const newPlan = await Workout.findByIdAndUpdate({_id: id, date: planDate}, {activities: addActivities},
-            {new: true, upsert: false, runValidators: true})
-        
-        res.send(newPlan)
-    } catch(error) {
-        return next(new Error(error.message))
-    }
+//Get all workouts by id
+router.get("/workouts", async(req, res) => {
+    const workouts = await Workout.findAll({
+        where: {
+            deleted: 0
+        },
+        include: [
+            {
+                model: Activity,
+                as: "Activities",
+                where: { deleted: false}
+            }
+        ]
+    })
+    res.json({ workouts })
 });
 
 
