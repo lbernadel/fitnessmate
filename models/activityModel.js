@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
               notEmpty: true
             }
         },
-        deleted: DataTypes.Boolean
+        deleted: DataTypes.BOOLEAN
       },{});
 
     Activity.associate = function(models) {

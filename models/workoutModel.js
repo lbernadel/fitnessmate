@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         isComplete: {
             type: DataTypes.BOOLEAN
         },
-        deleted: DataTypes.Boolean
+        deleted: DataTypes.BOOLEAN
     },{});
 
     return Workout;
