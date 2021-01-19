@@ -3,12 +3,13 @@ const express = require("express");
 const logger = require("morgan");
 const path = require("path");
 
-const PORT = process.env.PORT || 3306;
+const PORT = process.env.PORT || 4000;
 const app = express();
 
 //routers
 const staticRouter = require("./controllers/staticController");
 const workoutRouter = require("./controllers/workoutsController");
+const activityRouter = require("./controllers/activityController")
 const db = require("./models/index");
 
 
@@ -23,6 +24,7 @@ app.use(logger("dev"));
 // Routes
 app.use(staticRouter);
 app.use("/api/workouts", workoutRouter);
+app.use("/api/activities", activityRouter);
 
 // Wildcard route to catch any random paths not in defined routes
 app.use("*", (req, res) => {
