@@ -1,9 +1,12 @@
 const router = require("express").Router();
-const db = require("../models/index");
+const db = require("../models");
 const path = require("path");
+const Workout = db.Workout;
+const Activity = db.Activity;
+const WorkoutActivities = db.WorkoutActivities;
 
-const Workout = db.sequelize.import(path.resolve(__dirname,"../models/workoutModel.js"));
-const Activity = db.sequelize.import(path.resolve(__dirname,"../models/activityModel.js"));
+//db.sequelize.import(path.resolve(__dirname,"../models/workoutModel.js"));
+// const Activity = db.sequelize.import(path.resolve(__dirname,"../models/activityModel.js"));
 
 //Get all workouts by id
 router.get("/workouts", async(req, res) => {

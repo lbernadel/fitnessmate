@@ -11,3 +11,5 @@ router.get("/activities", async(req, res) => {
   })
   res.json({ activities })
 });
+
+module.exports = router

@@ -16,7 +16,7 @@ router.get("/workouts", (req, res) => {
 
 ////Go to activities
 router.get("/activities", async(req, res) => {
-    res.sendFile(path.join(__dirname,"../public/activities.html"))
+    res.sendFile(path.join(__dirname,"../public/allActivities.html"))
 });
 
 ////Go enter new workout
